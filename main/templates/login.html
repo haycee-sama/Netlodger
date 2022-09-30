@@ -1,0 +1,112 @@
+{% extends "header.html" %}
+
+{% block title %}
+
+Login
+
+{% endblock %}
+
+{% block content %}
+  User is logged In <br>
+Click to <a href="/logout" class="btn btn-primary">Logout</a>
+{% endblock %}
+
+{% block form %}
+
+
+{% load crispy_forms_tags %}
+
+<style>
+	@media only screen and (max-width: 768px) {
+	  /* For mobile phones: */
+	  body {
+		background-image: url(../static/images/bg-1.jpg);
+		background-size: auto;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-blend-mode: color-dodge;
+	  }
+	  .img {
+		display: none;
+	  }
+	}
+</style>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md col-lg-10">
+        <div class="wrap d-md-flex">
+          <div
+            class="img"
+            style="background-image: url(../static/images/bg-1.jpg)"
+          ></div>
+          <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+              <div class="w-100">
+                <h3 class="mb-4">Sign In</h3>
+              </div>
+              <div class="w-100">
+                <p class="social-media d-flex justify-content-end">
+                  <a
+                    href="#"
+                    class="social-icon d-flex align-items-center justify-content-center"
+                    ><span class="fa fa-facebook"></span
+                  ></a>
+                  <a
+                    href="#"
+                    class="social-icon d-flex align-items-center justify-content-center"
+                    ><span class="fa fa-twitter"></span
+                  ></a>
+                </p>
+              </div>
+            </div>
+            <form action="#" class="signin-form" method="post">
+              {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-success">
+                <strong>{{message}}</strong>
+              </div>
+
+              {% endfor %}
+              {% endif %}
+
+              <div class="form-group mb-3">
+                {% csrf_token %}
+                {{ login_form|crispy }}
+              
+              <div class="form-group">
+                <button
+                  type="submit"
+                  class="form-control btn btn-primary rounded submit px-3"
+                >
+                  Sign In
+                </button>
+              </div>
+              <div class="form-group d-md-flex">
+                <div class="w-50 text-left">
+                  <label class="checkbox-wrap checkbox-primary mb-0"
+                    >Remember Me
+                    <input type="checkbox" checked />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="w-50 text-md-right">
+                  <a href="/password_reset">Forgot Password</a>
+                </div>
+              </div>
+            </form>
+            <p class="text-center">
+              Not a member? <a  href="../register">Sign Up</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
+
+
