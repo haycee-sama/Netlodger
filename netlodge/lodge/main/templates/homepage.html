@@ -1,0 +1,48 @@
+{% extends "header.html" %}
+{% block title %}
+
+Homepage
+
+{% endblock %}
+
+{% block home %}
+
+active
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success" style="margin-top: 10% ;">
+        <strong>{{message}}</strong>
+      </div>
+
+    {% endfor %}
+  {% endif %}
+<p> Hi! </p>
+</div>
+    
+
+Click to <a href="/logout" class="btn btn-primary">Log out</a>
+
+
+
+
+
+{% endblock %}
+
+{% block form %}
+
+User isnt logged In <br>
+Click to <a href="/login" class="btn btn-primary">Log in</a>
+
+{% endblock %}
+
+
+
+
+
